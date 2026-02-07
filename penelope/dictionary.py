@@ -15,7 +15,7 @@ one for each synonym, with the definition of the original entry).
 """
 
 from __future__ import absolute_import
-import imp
+import importlib.util
 import os
 
 from penelope.prefix_default import get_prefix as get_prefix_default
@@ -482,7 +482,10 @@ Has synonyms:               %s
             get_prefix = prefix_function
         elif prefix_function_path is not None:
             try:
-                get_prefix = imp.load_source("", prefix_function).get_prefix
+                spec = importlib.util.spec_from_file_location("", prefix_function_path)
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                get_prefix = module.get_prefix
             except:
                 pass
 

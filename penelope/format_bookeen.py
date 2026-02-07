@@ -6,7 +6,7 @@ Read/write Bookeen dictionaries.
 """
 
 from __future__ import absolute_import
-import imp
+import importlib.util
 import io
 import os
 import sqlite3
@@ -199,7 +199,10 @@ def write(dictionary, args, output_file_path):
     collation_function = collate_function_default
     if bookeen_collation_function_path is not None:
         try:
-            collation_function = imp.load_source("", bookeen_collation_function_path).collate_function
+            spec = importlib.util.spec_from_file_location("", bookeen_collation_function_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            collation_function = module.collate_function
             print_debug("Using collation function from '%s'" % (bookeen_collation_function_path), args.debug)
         except:
             print_error("Unable to load collation function from '%s'. Using the default collation function instead." % (bookeen_collation_function_path))

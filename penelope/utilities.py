@@ -7,7 +7,7 @@ This file contains a collection of miscellaneous utility functions.
 
 from __future__ import absolute_import
 from __future__ import print_function
-import imp
+import importlib.util
 import os
 import shutil
 import stat
@@ -52,7 +52,10 @@ def load_input_parser(parser_file_path):
     if os.path.exists(parser_file_path):
         try:
             # load source file
-            parser = imp.load_source("", parser_file_path)
+            spec = importlib.util.spec_from_file_location("", parser_file_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            parser = module
             try:
                 # try calling parse function
                 parser.parse(None, None)
