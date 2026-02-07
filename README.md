@@ -2,9 +2,9 @@
 
 **Penelope** is a multi-tool for creating, editing and converting dictionaries, especially for eReader devices.
 
-* Version: 3.1.3
+* Version: 3.2
 * Date: 2026-02-07
-* Developer: [Alberto Pettarin](http://www.albertopettarin.it/)
+* Developer: Kamil Boczkal, fork of [Alberto Pettarin](http://www.albertopettarin.it/)
 * License: the MIT License (MIT)
 * Contact: [click here](http://www.albertopettarin.it/contact.html)
 
