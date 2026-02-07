@@ -3,7 +3,7 @@
 **Penelope** is a multi-tool for creating, editing and converting dictionaries, especially for eReader devices.
 
 * Version: 3.1.3
-* Date: 2016-09-23
+* Date: 2026-02-07
 * Developer: [Alberto Pettarin](http://www.albertopettarin.it/)
 * License: the MIT License (MIT)
 * Contact: [click here](http://www.albertopettarin.it/contact.html)
@@ -89,7 +89,7 @@ This procedure will not install any dependencies: you will need to do that manua
 
 ### Dependencies
 
-* Python, version 2.7.x or 3.4.x (or above)
+* Python, version 3.14 (or above)
 
 * to write StarDict dictionaries: the `dictzip` executable, available in your `$PATH` or specified with `--dictzip-path`:
 
